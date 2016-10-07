@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use League\Fractal;
 use App\Http\Requests;
@@ -16,10 +14,10 @@ use App\Http\Controllers\ApiController;
 class NewsController extends ApiController
 {
     //
-    public function index($slug)
+    public function index()
     {
-        $paginator = News::paginate();
-        return $this->respondWithPaginator($paginator,new NewsTransformer());
+        $news = News::all();
+        return $this->respondWithCollection($news, new NewsTransformer());
 
     }
 }

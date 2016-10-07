@@ -8,9 +8,13 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Model\Tag;
 class Multimedia extends Model
 {
     //
     protected $table = 'multimedia';
+
+    public function tag(){
+        return $this->belongsToMany('Tag');
+    }
 }

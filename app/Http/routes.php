@@ -9,5 +9,18 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('/','HomeController@index');
+Route::get('home','HomeController@index');
 Route::get('news','NewsController@index');
 Route::get('multimedia','MultimediaController@index');
+Route::group(['prefix'=>'admin','middleware' => 'auth'],function(){
+    Route::get('/','Admin\AdminController@index');
+    Route::group(['prefix'=>'news'], function(){
+        Route::resource('/', 'Admin\NewsController');
+
+    });
+    Route::group(['prefix'=>'category'], function(){
+        Route::resource('/', 'Admin\CategoryController');
+    });
+});
+Route::auth();
