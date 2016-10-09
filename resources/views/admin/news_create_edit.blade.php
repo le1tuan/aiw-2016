@@ -44,7 +44,7 @@
                             @if(isset($categories))
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Category</label>
-                                <select name="category">
+                                <select name="category_id">
                                     <?php var_dump($categories) ?>
                                     @foreach($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>

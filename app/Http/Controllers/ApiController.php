@@ -1,7 +1,5 @@
 <?php
 namespace App\Http\Controllers;
-
-
 use Symfony\Component\HttpFoundation\Response;
 use League\Fractal\Resource\Item;
 use League\Fractal\Manager;

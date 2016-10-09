@@ -20,6 +20,11 @@
                     <div class="panel-heading"></div>
                     <div class="panel-body">
                         <a class="btn btn-default" href="news/create">Create News</a>
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
+                            </div>
+                        @endif
                         <table class="table table-bordered" style="margin-top: 20px">
                             <tr>
                                 <th>Title</th>
@@ -27,13 +32,13 @@
                                 <th>Author</th>
                                 <th>Slug</th>
                             </tr>
-                            @if(isset($news))
-                                @foreach($news as $new)
+                            @if(isset($results))
+                                @foreach($results as $result)
                                     <tr>
-                                        <td>{{$new->title}}</td>
-                                        <td>{{$new->short_des}}</td>
-                                        <td>{{$new->author}}</td>
-                                        <td>{{$new->slug}}</td>
+                                        <td>{{$result->title}}</td>
+                                        <td>{{$result->short_des}}</td>
+                                        <td>{{$result->author}}</td>
+                                        <td>{{$result->slug}}</td>
                                     </tr>
                                 @endforeach
                             @else

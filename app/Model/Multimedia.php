@@ -17,4 +17,11 @@ class Multimedia extends Model
     public function tag(){
         return $this->belongsToMany('Tag');
     }
+    public function sluggable(){
+        return [
+            'slug' => [
+                'source'=> 'title'
+            ]
+        ];
+    }
 }

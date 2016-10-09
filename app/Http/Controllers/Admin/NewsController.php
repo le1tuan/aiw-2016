@@ -17,19 +17,18 @@ class NewsController extends CoreController{
         parent::__construct();
         $this->name=$this->path."News";
         $this->alias="news";
+        $this->viewFields=["title","short_des","content","title","thumb","author","category"];
     }
     public function store(){
         $input = Input::all();
-        var_dump($input);
-        $news = new News;
-        $news->title=$input['title'];
-        $news->short_des=$input['short_des'];
-        $news->content=$input['content'];
-        $news->slug=$input['title'];
-        $news->thumb=$input['thumb'];
-        $news->author=$input['author'];
-        $news->category_id=$input['category'];
-        $news->save();
-        return redirect('/');
+        $mainModel = $this->name;
+        unset($input["_token"]);
+        $entry =$mainModel::create($input);
+        if(isset($entry)){
+            return redirect('admin/news')->with('status','News created');
+        }else{
+            return redirect('admin/news')->with('status','Error when create news');
+        }
+
     }
 }

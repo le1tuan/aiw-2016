@@ -10,9 +10,10 @@ use App\Http\Controllers\Controller;
 use App\Model\Category;
 
 class CoreController extends Controller{
-    public  $path;
+    public $path;
     public $name;
     public $alias;
+    public $viewFields;
     public function __construct(){
         $this->path="App\\Model\\";
     }
@@ -21,7 +22,9 @@ class CoreController extends Controller{
         $mainModel = $this->name;
         $results = $mainModel::get();
         if(isset($results)){
-            return view("admin.".$this->alias,$results);
+            return view("admin.".$this->alias,[
+                'results' => $results
+            ]);
         }else{
             return view("admin.".$this->alias);
         }

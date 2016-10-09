@@ -8,14 +8,14 @@
 namespace App\Http\Transformer;
 use App\Model\News;
 use League\Fractal;
-class NewsTransformer extends Fractal\TransformerAbstract{
+class NewsDetailTransformer extends Fractal\TransformerAbstract{
     public function transform(News $news)
     {
         return [
             "id" => $news->id,
             "title" => $news->title,
+            "content" => $news->content,
             "category_id" => $news->category_id,
-            "short_des" => $news->short_des,
             "slug" => $news->slug,
             "thumb" => $news->thumb,
             "author" => $news->author,

@@ -22,18 +22,14 @@
                         <a class="btn btn-default" href="news/create">Create News</a>
                         <table class="table table-bordered" style="margin-top: 20px">
                             <tr>
-                                <th>Title</th>
-                                <th>Short Description</th>
-                                <th>Author</th>
-                                <th>Slug</th>
+                                <th>Id</th>
+                                <th>Name</th>
                             </tr>
-                            @if(isset($news))
-                                @foreach($news as $new)
+                            @if(isset($results))
+                                @foreach($results as $result)
                                     <tr>
-                                        <td>{{$new->title}}</td>
-                                        <td>{{$new->short_des}}</td>
-                                        <td>{{$new->author}}</td>
-                                        <td>{{$new->slug}}</td>
+                                        <td>{{$result->id}}</td>
+                                        <td>{{$result->name}}</td>
                                     </tr>
                                 @endforeach
                             @else

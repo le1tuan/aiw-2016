@@ -11,7 +11,10 @@
 */
 Route::get('/','HomeController@index');
 Route::get('home','HomeController@index');
-Route::get('news','NewsController@index');
+Route::group(['prefix'=>'news'],function(){
+    Route::get('/','NewsController@index');
+    Route::get('{slug}','NewsController@show');
+});
 Route::get('multimedia','MultimediaController@index');
 Route::group(['prefix'=>'admin','middleware' => 'auth'],function(){
     Route::get('/','Admin\AdminController@index');
