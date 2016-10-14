@@ -31,6 +31,7 @@ Route::group(['prefix'=>'admin','middleware' => 'auth'],function(){
     Route::get('/','Admin\AdminController@index');
     Route::group(['prefix'=>'news'], function(){
         Route::resource('/', 'Admin\NewsController');
+        Route::delete('/{id}','Admin\NewsController@destroy');
 
     });
     Route::group(['prefix'=>'category'], function(){

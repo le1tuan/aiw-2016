@@ -41,8 +41,14 @@
                                         <td>{{$result->short_des}}</td>
                                         <td>{{$result->author}}</td>
                                         <td>{{$result->slug}}</td>
-                                        <td><a href="{{ url('admin') }}" class="btn btn-primary">Edit</a> </td>
-                                        <td><a href="" class="btn btn-danger">Delete</a> </td>
+                                        <td><a href="" class="btn btn-primary">Edit</a></td>
+                                        <td>
+                                            <form method="post" action="{{url('admin/news/'.$result->id )}}">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <button type="submit" class="btn btn-danger" onclick="return confirmDelete()">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             @else

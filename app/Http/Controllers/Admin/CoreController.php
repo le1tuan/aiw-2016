@@ -41,4 +41,19 @@ class CoreController extends Controller{
         }
 
     }
+    public function destroy($id){
+        if($this->alias=="news"||$this->alias=="multimedia"){
+            $model=$this->name;
+            $data= $model::findOrFail($id);
+            if($data){
+                $data->delete();
+                return redirect('admin/'.$this->alias)->with('status',ucfirst($this->alias).' deleted');
+            }else{
+                return redirect('admin/'.$this->alias)->with('status','Error when delete'.ucfirst($this->alias));
+            }
+        }else{
+            return view('admin.'.$this->alias."_create_edit");
+        }
+
+    }
 }
