@@ -20,7 +20,12 @@ class NewsController extends CoreController{
         $this->viewFields=["title","short_des","content","title","thumb","author","category"];
     }
     public function store(){
+        if(Input::hasFile('thumb')){
+            $file = Input::file('thumb');
+            $file->move('uploads',$file->getClientOriginalName());
+        }
         $input = Input::all();
+        $input['thumb']=$file->getClientOriginalName();
         $mainModel = $this->name;
         unset($input["_token"]);
         $entry =$mainModel::create($input);

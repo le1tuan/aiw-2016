@@ -9,13 +9,24 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+header('Access-Control-Allow-Origin: *');  
 Route::get('/','HomeController@index');
 Route::get('home','HomeController@index');
 Route::group(['prefix'=>'news'],function(){
     Route::get('/','NewsController@index');
     Route::get('{slug}','NewsController@show');
 });
-Route::get('multimedia','MultimediaController@index');
+Route::group(['prefix'=>'multimedia'],function(){
+    Route::get('/','MultimediaController@index');
+    Route::get('{slug}','MultimediaController@show');
+});
+
+
+
+
+
+
+
 Route::group(['prefix'=>'admin','middleware' => 'auth'],function(){
     Route::get('/','Admin\AdminController@index');
     Route::group(['prefix'=>'news'], function(){

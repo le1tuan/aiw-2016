@@ -11,10 +11,11 @@ use League\Fractal\TransformerAbstract;
  */
 class CategoryTransformer extends TransformerAbstract
 {
-    public function transform(Category $news)
+    public function transform(Category $categories)
     {
         return [
-            "id" => $news->id,
+            "id" => $categories->id,
+            "name" => $categories->name,
         ];
     }
 }

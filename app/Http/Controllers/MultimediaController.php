@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Http\Controllers\ApiController;
+use App\Http\Transformer\MultimediaDetailTransformer;
 use App\Http\Transformer\MultimediaTransformer;
 use App\Model\Multimedia;
 
@@ -12,7 +13,11 @@ use App\Model\Multimedia;
  */
 class MultimediaController extends ApiController{
     public function index(){
-        $muls = Multimedia::all();
-        return $this->respondWithCollection($muls, new MultimediaTransformer());
+        $muls = Multimedia::paginate(4);
+        return $this->respondWithPaginator($muls, new MultimediaTransformer());
+    }
+    public function show($slug){
+        $muls = Multimedia::where('slug','=',$slug)->get();
+        return $this->respondWithCollection($muls, new MultimediaDetailTransformer());
     }
 }

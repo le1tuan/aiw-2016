@@ -19,7 +19,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Menu</div>
                     <div class="panel-body">
-                        <form action="{{ url('admin/news') }}" method="post">
+                        <form action="{{ url('admin/news') }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Title</label>
@@ -31,27 +31,35 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">content</label>
-                                <input type="text" class="form-control" name="content" placeholder="content">
+                                <textarea id="editor1" name="content" cols="80" rows="10">
+                                </textarea>
+                                <script>
+                                    CKEDITOR.replace('editor1');
+                                </script>
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword1">thumb</label>
-                                <input type="text" class="form-control" name="thumb" placeholder="thumb">
+                                <label>Thumb</label>
+                                <input type="file" name="thumb">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">author</label>
                                 <input type="text" class="form-control" name="author" placeholder="Password">
                             </div>
                             @if(isset($categories))
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Category</label>
-                                <select name="category_id">
-                                    <?php var_dump($categories) ?>
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Category</label>
+                                    <select name="category_id">
+                                        <?php var_dump($categories) ?>
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             @endif
+                            <div class="form-group">
+                                <label for="">Tag</label>
+                                <input type="text" name="tag[]">
+                            </div>
                             <button type="submit" class="btn btn-default">Submit</button>
                         </form>
                     </div>

@@ -22,7 +22,7 @@ class CoreController extends Controller{
         $mainModel = $this->name;
         $results = $mainModel::get();
         if(isset($results)){
-            return view("admin.".$this->alias,[
+            return view("admin.".ucfirst($this->alias).".".$this->alias,[
                 'results' => $results
             ]);
         }else{
@@ -33,7 +33,7 @@ class CoreController extends Controller{
     public function create(){
         if($this->alias=="news"||$this->alias=="multimedia"){
             $categories = Category::all();
-            return view('admin.'.$this->alias."_create_edit",[
+            return view('admin.'.ucfirst($this->alias).".".$this->alias."_create_edit",[
                 'categories' => $categories,
             ]);
         }else{

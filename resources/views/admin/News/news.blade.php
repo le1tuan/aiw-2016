@@ -31,6 +31,8 @@
                                 <th>Short Description</th>
                                 <th>Author</th>
                                 <th>Slug</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
                             </tr>
                             @if(isset($results))
                                 @foreach($results as $result)
@@ -39,6 +41,8 @@
                                         <td>{{$result->short_des}}</td>
                                         <td>{{$result->author}}</td>
                                         <td>{{$result->slug}}</td>
+                                        <td><a href="{{ url('admin') }}" class="btn btn-primary">Edit</a> </td>
+                                        <td><a href="" class="btn btn-danger">Delete</a> </td>
                                     </tr>
                                 @endforeach
                             @else
