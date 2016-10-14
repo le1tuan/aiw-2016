@@ -19,7 +19,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"></div>
                     <div class="panel-body">
-                        <a class="btn btn-default" href="news/create">Create News</a>
+                        <a class="btn btn-default" href="{{ url('admin/news/create') }}">Create News</a>
                         @if (session('status'))
                             <div class="alert alert-success">
                                 {{ session('status') }}
@@ -41,7 +41,7 @@
                                         <td>{{$result->short_des}}</td>
                                         <td>{{$result->author}}</td>
                                         <td>{{$result->slug}}</td>
-                                        <td><a href="" class="btn btn-primary">Edit</a></td>
+                                        <td><a href="{{url('admin/news/'.$result->id.'/edit')}}" class="btn btn-primary">Edit</a></td>
                                         <td>
                                             <form method="post" action="{{url('admin/news/'.$result->id )}}">
                                                 {{ csrf_field() }}

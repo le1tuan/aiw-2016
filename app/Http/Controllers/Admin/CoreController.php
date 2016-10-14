@@ -56,4 +56,18 @@ class CoreController extends Controller{
         }
 
     }
+    public function edit($id){
+        if($this->alias=="news"||$this->alias=="multimedia"){
+            $model=$this->name;
+            $result= $model::findOrFail($id);
+//            $category= $data->category();
+            $categories = Category::all();
+            return view('admin.'.ucfirst($this->alias).".".$this->alias."_create_edit",[
+                'result' => $result,
+                'categories' => $categories,
+            ]);
+        }else{
+            return view('admin.'.$this->alias."_create_edit");
+        }
+    }
 }
