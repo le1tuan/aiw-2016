@@ -8,10 +8,11 @@
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Model\Category;
+use App\Model\Tag;
 use App\Model\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-
+use Illuminate\Support\Facades\Session;
 class NewsController extends CoreController{
     public function __construct(){
         parent::__construct();
@@ -32,32 +33,33 @@ class NewsController extends CoreController{
         $mainModel = $this->name;
         unset($input["_token"]);
         $entry =$mainModel::create($input);
+        $tag = Tag::findOrFail(1);
+        $entry->tag()->save($tag);
         if(isset($entry)){
-            return redirect('admin/news')->with('status','News created');
+            Session::flash('success','News created');
+            return redirect('admin/news');
         }else{
-            return redirect('admin/news')->with('status','Error when create news');
+            Session::flash('error','Error when create news');
+            return redirect('admin/news');
         }
 
     }
     public function update($id){
         $input = Input::all();
         $data = News::findOrFail($id);
-        $data->title=$input['title'];
-        $data->short_des=$input['short_des'];
-        $data->content=$input['content'];
         if(Input::hasFile('thumb')){
             $file = Input::file('thumb');
             $this->saveFile($file);
             $input['thumb']=$file->getClientOriginalName();
-            $data->thumb=$input['thumb'];
         }
-        $data->author=$input['author'];
-        $data->slug=null;
-        $data->save();
-        if(isset($entry)){
-            return redirect('admin/news')->with('status','News Updated');
+        $data->slug='';
+        $data->update($input);
+        if(isset($data)){
+            Session::flash('success','News Updated');
+            return redirect('admin/news');
         }else{
-            return redirect('admin/news')->with('status','Error when update news');
+            Session::flash('error','Error when update news');
+            return redirect('admin/news');
         }
     }
 }

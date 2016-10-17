@@ -20,11 +20,7 @@
                     <div class="panel-heading"></div>
                     <div class="panel-body">
                         <a class="btn btn-default" href="{{ url('admin/news/create') }}">Create News</a>
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+                        @include('common.errors')
                         <table class="table table-bordered" style="margin-top: 20px">
                             <tr>
                                 <th>Title</th>
@@ -41,19 +37,21 @@
                                         <td>{{$result->short_des}}</td>
                                         <td>{{$result->author}}</td>
                                         <td>{{$result->slug}}</td>
-                                        <td><a href="{{url('admin/news/'.$result->id.'/edit')}}" class="btn btn-primary">Edit</a></td>
+                                        <td><a href="{{url('admin/news/'.$result->id.'/edit')}}"
+                                               class="btn btn-primary">Edit</a></td>
                                         <td>
                                             <form method="post" action="{{url('admin/news/'.$result->id )}}">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btn btn-danger" onclick="return confirmDelete()">Delete</button>
+                                                <button type="submit" class="btn btn-danger"
+                                                        onclick="return confirmDelete()">Delete
+                                                </button>
                                             </form>
                                         </td>
                                     </tr>
                                 @endforeach
                             @else
                             @endif
-
                         </table>
                     </div>
                 </div>

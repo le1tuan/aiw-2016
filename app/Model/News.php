@@ -4,6 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Model\Category;
+use App\Model\Tag;
 use Cviebrock\EloquentSluggable\Sluggable;
 
 
@@ -17,7 +18,7 @@ class News extends Model
         return $this->belongsTo(Category::class);
     }
     public function tag(){
-        return $this->belongsToMany('Tag');
+        return $this->belongsToMany(Tag::class);
     }
     public function sluggable(){
         return [

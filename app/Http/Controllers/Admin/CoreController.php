@@ -70,4 +70,18 @@ class CoreController extends Controller{
             return view('admin.'.$this->alias."_create_edit");
         }
     }
+//    public function update($id){
+//        $model=$this->name;
+//        $input = Input::all();
+//        $data = $model::findOrFail($id);
+//        $data->slug='';
+//        $data->update($input);
+//        if(isset($data)){
+//            Session::flash('success','Updated '.$this->alias);
+//            return redirect('admin/news');
+//        }else{
+//            Session::flash('error','Error when update '.$this->alias);
+//            return redirect('admin/news');
+//        }
+//    }
 }
