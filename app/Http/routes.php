@@ -24,6 +24,10 @@ Route::group(['prefix'=>'multimedia'],function(){
     Route::get('/','MultimediaController@index');
     Route::get('{slug}','MultimediaController@show');
 });
+Route::group(['prefix'=>'category'],function(){
+    Route::get('/','CategoryController@index');
+});
+
 
 
 

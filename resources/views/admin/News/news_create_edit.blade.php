@@ -20,7 +20,9 @@
                     <div class="panel-heading">Menu</div>
                     <div class="panel-body">
                         @if(isset($result))
-                            <form action="{{ url('admin/news/'.$result->id) }}" method="post" enctype="multipart/form-data">
+                            {{$tag}}
+                            <form action="{{ url('admin/news/'.$result->id) }}" method="post"
+                                  enctype="multipart/form-data">
                                 <input type="hidden" name="_method" value="PUT">
                                 @else
                                     <form action="{{ url('admin/news') }}" method="post" enctype="multipart/form-data">
@@ -29,17 +31,20 @@
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Title</label>
                                             <input type="text" class="form-control" name="title" placeholder="Title"
-                                                   value="{{ isset($result)?$result->title:''}}">
+                                                   value="{{ isset($result)?$result->title:''}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Short_des</label>
                                             <input type="text" class="form-control" name="short_des"
                                                    placeholder="short_des"
-                                                   value="{{ isset($result)?$result->short_des:''}}">
+                                                   value="{{ isset($result)?$result->short_des:''}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Content</label>
-                                            <textarea id="editor1" name="content" cols="80" rows="10">{{ isset($result)?$result->content:''}}
+                                            <textarea id="editor1" name="content" cols="80" rows="10" required>
+                                            @if(isset($result))
+                                                    {{$result->content}}
+                                                @endif
                                             </textarea>
                                             <script>
                                                 CKEDITOR.replace('editor1');
@@ -48,30 +53,41 @@
                                         <div class="form-group">
                                             <label>Thumb</label>
                                             @if(isset($result))
-                                                <img src="{{url('uploads/'.$result->thumb)}}" alt="thumb" style="width: 100px"/>
+                                                <img src="{{url('uploads/'.$result->thumb)}}" alt="thumb"
+                                                     style="width: 100px"/>
                                             @endif
-                                            <input type="file" name="thumb">
+                                            <input type="file" name="thumb" {{ isset($result)?'':'required' }}>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Author</label>
                                             <input type="text" class="form-control" name="author"
-                                                   placeholder="Password" value="{{ isset($result)?$result->author:''}}">
+                                                   placeholder="Password"
+                                                   value="{{ isset($result)?$result->author:''}}" required>
                                         </div>
                                         @if(isset($categories))
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">Category</label>
-                                                <select name="category_id" class="form-control">
+                                                <select name="category_id" class="form-control" required>
                                                     <?php var_dump($categories) ?>
                                                     @foreach($categories as $category)
-                                                        <option value="{{ $category->id }}" {{ isset($result)&&($result->category_id==$category->id)?'selected':''}}        >{{ $category->name }}</option>
+                                                        <option value="{{ $category->id }}" {{ isset($result)&&($result->category_id==$category->id)?'selected':''}} >{{ $category->name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         @endif
-                                        <div class="form-group">
+                                        <div class="form-group tag">
                                             <label for="">Tag</label>
-                                            <input type="text" name="tag[]">
+                                            @if(isset($result))
+                                                @foreach($tag as $t)
+                                                    <p>{{$t->name}}</p>
+                                                @endforeach
+                                            @endif
+                                            <input type="text" class="form-control" name="tag[]" required>
                                         </div>
+                                        <div class="tag-result">
+
+                                        </div>
+                                        <a class="btn btn-primary" id="add-tag">Add Tag</a>
                                         <button type="submit" class="btn btn-default">Submit</button>
                                     </form>
                     </div>

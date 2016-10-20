@@ -24,17 +24,25 @@ class NewsController extends CoreController{
         $file->move('uploads',$file->getClientOriginalName());
     }
     public function store(){
+
         if(Input::hasFile('thumb')){
             $file = Input::file('thumb');
             $this->saveFile($file);
         }
         $input = Input::all();
+        var_dump($input);
         $input['thumb']=$file->getClientOriginalName();
         $mainModel = $this->name;
         unset($input["_token"]);
         $entry =$mainModel::create($input);
-        $tag = Tag::findOrFail(1);
-        $entry->tag()->save($tag);
+        foreach($input['tag'] as $key => $value){
+            if($value!=""){
+                $tag = new Tag;
+                $tag->name=$value;
+                $tag->save();
+                $entry->tag()->save($tag);
+            }
+        }
         if(isset($entry)){
             Session::flash('success','News created');
             return redirect('admin/news');
@@ -46,15 +54,23 @@ class NewsController extends CoreController{
     }
     public function update($id){
         $input = Input::all();
-        $data = News::findOrFail($id);
+        $entry = News::findOrFail($id);
         if(Input::hasFile('thumb')){
             $file = Input::file('thumb');
             $this->saveFile($file);
             $input['thumb']=$file->getClientOriginalName();
         }
-        $data->slug='';
-        $data->update($input);
-        if(isset($data)){
+        $entry->slug='';
+        foreach($input['tag'] as $key => $value){
+            if($value!=""){
+                $tag = new Tag;
+                $tag->name=$value;
+                $tag->save();
+                $entry->tag()->save($tag);
+            }
+        }
+        $entry->update($input);
+        if(isset($entry)){
             Session::flash('success','News Updated');
             return redirect('admin/news');
         }else{

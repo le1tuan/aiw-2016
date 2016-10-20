@@ -23,6 +23,7 @@
                         @include('common.errors')
                         <table class="table table-bordered" style="margin-top: 20px">
                             <tr>
+                                <th>Id</th>
                                 <th>Title</th>
                                 <th>Short Description</th>
                                 <th>Author</th>
@@ -33,6 +34,7 @@
                             @if(isset($results))
                                 @foreach($results as $result)
                                     <tr>
+                                        <td>{{$result->id}}</td>
                                         <td>{{$result->title}}</td>
                                         <td>{{$result->short_des}}</td>
                                         <td>{{$result->author}}</td>

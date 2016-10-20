@@ -157,6 +157,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
         Cviebrock\EloquentSluggable\ServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
 
     ],
 
@@ -204,6 +205,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     ],
 

@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
         "league/fractal" :"*",
         "tymon/jwt-auth": "0.5.*",
-        "cviebrock/eloquent-sluggable": "4.1"
+        "cviebrock/eloquent-sluggable": "4.1",
+        "barryvdh/laravel-debugbar": "^2.3"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
