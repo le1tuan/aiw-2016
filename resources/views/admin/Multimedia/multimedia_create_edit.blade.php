@@ -21,11 +21,11 @@
                     <div class="panel-body">
                         @if(isset($result))
                             {{$tag}}
-                            <form action="{{ url('admin/news/'.$result->id) }}" method="post"
+                            <form action="{{ url('admin/multimedia/'.$result->id) }}" method="post"
                                   enctype="multipart/form-data">
                                 <input type="hidden" name="_method" value="PUT">
                                 @else
-                                    <form action="{{ url('admin/news') }}" method="post" enctype="multipart/form-data">
+                                    <form action="{{ url('admin/multimedia') }}" method="post" enctype="multipart/form-data">
                                         @endif
                                         {{ csrf_field() }}
                                         <div class="form-group">
@@ -51,12 +51,10 @@
                                             </script>
                                         </div>
                                         <div class="form-group">
-                                            <label>Thumb</label>
-                                            @if(isset($result))
-                                                <img src="{{url('uploads/'.$result->thumb)}}" alt="thumb"
-                                                     style="width: 100px"/>
-                                            @endif
-                                            <input type="file" name="thumb"/>
+                                            <label for="exampleInputPassword1">Link</label>
+                                            <input type="text" class="form-control" name="link"
+                                                   placeholder="short_des"
+                                                   value="{{ isset($result)?$result->link:''}}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Author</label>

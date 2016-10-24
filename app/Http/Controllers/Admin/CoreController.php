@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Model\Category;
 use App\Model\Tag;
+use Illuminate\Support\Facades\DB;
 
 class CoreController extends Controller
 {
@@ -59,6 +60,8 @@ class CoreController extends Controller
             $model = $this->name;
             $data = $model::findOrFail($id);
             if ($data) {
+                $tags = $data->tag()->get();
+                $data->tag()->detach($tags);
                 $data->delete();
                 return redirect('admin/' . $this->alias)->with('status', ucfirst($this->alias) . ' deleted');
             } else {

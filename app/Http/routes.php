@@ -43,6 +43,12 @@ Route::group(['prefix'=>'admin','middleware' => 'auth'],function(){
         Route::get('/{id}/edit','Admin\NewsController@edit');
         Route::put('/{id}','Admin\NewsController@update');
     });
+    Route::group(['prefix'=>'multimedia'], function(){
+        Route::resource('/', 'Admin\MultimediaController');
+        Route::delete('/{id}','Admin\MultimediaController@destroy');
+        Route::get('/{id}/edit','Admin\MultimediaController@edit');
+        Route::put('/{id}','Admin\MultimediaController@update');
+    });
     Route::group(['prefix'=>'category'], function(){
         Route::resource('/', 'Admin\CategoryController');
     });

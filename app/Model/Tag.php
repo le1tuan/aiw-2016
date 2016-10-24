@@ -11,9 +11,9 @@ class Tag extends Model
     protected $table = 'tag';
 
     public function multimedia(){
-        return $this->belongsToMany(Multimedia::class);
+        return $this->belongsToMany(Multimedia::class)->withTimestamps();
     }
     public function news(){
-        return $this->belongsToMany(News::class);
+        return $this->belongsToMany(News::class)->withTimestamps();
     }
 }
