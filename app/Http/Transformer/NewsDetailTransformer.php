@@ -11,6 +11,8 @@ use League\Fractal;
 class NewsDetailTransformer extends Fractal\TransformerAbstract{
     public function transform(News $news)
     {
+        $created_at= strtotime($news->created_at);
+        $created_at = date("F j, Y, g:i a",$created_at);
         return [
             "id" => $news->id,
             "title" => $news->title,
@@ -19,7 +21,7 @@ class NewsDetailTransformer extends Fractal\TransformerAbstract{
             "slug" => $news->slug,
             "thumb" => $news->thumb,
             "author" => $news->author,
-            "create_date" => $news->create_date
+            "created_at" => $created_at
         ];
     }
 }

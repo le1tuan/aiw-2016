@@ -21,7 +21,7 @@
                     <div class="panel-body">
                         <a class="btn btn-default" href="{{ url('admin/news/create') }}">Create News</a>
                         @include('common.errors')
-                        <table class="table table-bordered" style="margin-top: 20px">
+                        <table class="table table-bordered" style="margin-top: 20px;">
                             <tr>
                                 <th>Id</th>
                                 <th>Title</th>

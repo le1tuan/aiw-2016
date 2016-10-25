@@ -11,6 +11,8 @@ use League\Fractal;
 class MultimediaDetailTransformer extends Fractal\TransformerAbstract{
     public function transform(Multimedia $muls)
     {
+        $created_at= strtotime($muls->created_at);
+        $created_at = date("F j, Y, g:i a",$created_at);
         return [
             "id" => $muls->id,
             "title" => $muls->title,
@@ -19,7 +21,7 @@ class MultimediaDetailTransformer extends Fractal\TransformerAbstract{
             "slug" => $muls->slug,
             "thumb" => $muls->thumb,
             "author" => $muls->author,
-            "create_date" => $muls->create_date
+            "created_at" => $created_at
         ];
     }
 }
