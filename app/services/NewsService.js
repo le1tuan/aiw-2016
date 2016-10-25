@@ -2,7 +2,7 @@
  * Created by Le Tuan Anh on 10/9/2016.
  */
 angular.module('aiwApp').factory('News', function ($resource) {
-    return $resource('http://aiw.local/news/:slug',{},{
+    return $resource('http://aiw.local/news/:slug',{slug: '@_slug'},{
         'get':    {method:'GET'},
         'save':   {method:'POST'},
         'query':  {method:'GET',isArray: false},

@@ -22,6 +22,7 @@
     <script src="vendor/node_modules/angular-ui-router/angular-ui-router.js"></script>
     <script src="vendor/node_modules/angular-resource/angular-resource.js"></script>
     <script src="app/app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
 
 </head>
 
@@ -66,7 +67,7 @@
                     <div class="post">
                     <!-- Third Blog Post -->
                         <h2 class="news-title">
-                            <a href="#">{{news.title}}</a>
+                            <a ui-sref="newsDetail({slug: news.slug})">{{news.title}}</a>
                         </h2>
                         <p class="lead">
                             by <a href="index.php">{{news.author}}</a>
