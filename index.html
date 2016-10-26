@@ -23,6 +23,8 @@
     <script src="vendor/node_modules/angular-resource/angular-resource.js"></script>
     <script src="app/app.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-sanitize.js"></script>
+    
+    
 
 </head>
 
@@ -83,14 +85,23 @@
                     </div>
                 </div>
                 <!-- Pager -->
-                        <ul class="pager">
-                            <li class="previous">
-                                <a href="#">&larr; Older</a>
-                            </li>
-                            <li class="next">
-                                <a href="#">Newer &rarr;</a>
-                            </li>
-                        </ul>
+
+                 <div ng-repeat="mul in muls.data">
+                    <h2 class="news-title">
+                        <a ui-sref="newsDetail({slug: news.slug})">{{mul.title}}</a>
+                        </h2>
+                        <p class="lead">
+                            by <a href="index.php">{{mul.author}}</a>
+                        </p>
+                        <p><span class="glyphicon glyphicon-time"></span> Posted on {{mul.created_at}}</p>
+                        <hr>
+                        <iframe width="560" height="315" src='{{mul.link}}' frameborder="0" allowfullscreen></iframe>
+                        <hr>
+                        <p>{{mul.short_des}}</p>
+                        <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
+                        <hr>
+                 </div>       
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
@@ -157,6 +168,16 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="app/services/NewsService.js"></script>
     <script src="app/services/CategoryService.js"></script>
+    <script src="app/services/MultimediaService.js"></script>
+
+    <script>
+
+        $(function(){
+
+
+        });
+
+    </script>
 </body>
 
 </html>

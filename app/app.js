@@ -4,19 +4,37 @@
 var aiw = angular.module('aiwApp', ['ui.router', 'ngResource','ngSanitize']);
 aiw.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-        .state('/', {
+        .state('homepage', {
             url: '/',
             templateUrl: '../index.html',
-            controller: function ($scope,News,Category) {
-            	$scope.news=News.query();
+            controller: function ($scope,News,Category,$stateParams,$state,Multimedia) {
+                $scope.news=News.get({page:$scope.page});
+                $scope.nextPage=1;
                 $scope.categories=Category.query();
+                $scope.muls= Multimedia.get();
+            
+            }
+        })
+        .state('homepage.pagination',{
+            url:':page',
+            templateUrl:'../index.html',
+            controller: function ($scope,News,Category,$stateParams,$state) {
+                $scope.currentPage=(parseInt($stateParams.page)+1);
+                $scope.news=News.get({page:$scope.currentPage});
+                $scope.news.$promise.then(function(data){
+                    $scope.currentPage=data.meta.pagination.current_page;
+                });
+                $scope.categories=Category.query();
+                $scope.goToPage=function(){
+                    $state.go('homepage.pagination',{page:$scope.currentPage});
+                }
             }
         })
         .state('news', {
             url: '/news',
             templateUrl: '../index.html',
-            controller: function($scope,News){
-                $scope.news=News.query();
+            controller: function($scope,News,$stateParams){
+                $scope.news=News.get();
             }
         })
         .state('newsDetail',{
@@ -35,10 +53,7 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
         })
     $urlRouterProvider.otherwise('/');
 }).constant('ApiUrl', 'http://aiw.local/');
+aiw.config(function ($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist(['**']);
+});
 
-aiw.filter('htmlToPlaintext', function() {
-    return function(text) {
-      return  text ? String(text).replace(/<[^>]+>/gm, '') : '';
-    };
-  }
-);
