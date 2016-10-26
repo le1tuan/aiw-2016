@@ -29,15 +29,16 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 Aiw webservice supplies all requirements of aiw final projects.
 This webservice is written by REST
 You can get data by change the url.
-List of url
-1.Get all news
+
+## List of url
+## 1.Get all news
 http://masterle.96.lt/public/news
-2.Get one news by slug.
+## 2.Get one news by slug.
 http://masterle.96.lt/public/news/slug
-3.Get all multimedia
+## 3.Get all multimedia
 http://masterle.96.lt/public/multimedia
-4.Get one multimedia by slug
+## 4.Get one multimedia by slug
 http://masterle.96.lt/public/multimedia/slug
-5.Get all category
+## 5.Get all category
 http://masterle.96.lt/public/category
 
