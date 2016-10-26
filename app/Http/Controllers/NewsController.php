@@ -17,11 +17,12 @@ class NewsController extends ApiController
     //
     public function index()
     {
-        $news = News::orderBy('created_at','desc')->take(5)->get();
-        return $this->respondWithCollection($news, new NewsTransformer());
+        $news = News::orderBy('created_at','desc')->paginate(5);
+        return $this->respondWithPaginator($news, new NewsTransformer());
     }
     public function show($slug){
         $news = News::where('slug','=',$slug)->get();
         return $this->respondWithCollection($news, new NewsDetailTransformer());
     }
+
 }
