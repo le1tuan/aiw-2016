@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMultimediaTagTable extends Migration
+class CreatTableMultimediaTag extends Migration
 {
     /**
      * Run the migrations.
@@ -16,8 +16,8 @@ class CreateMultimediaTagTable extends Migration
             $table->increments('id');
             $table->integer('multimedia_id')->unsigned();
             $table->integer('tag_id')->unsigned();
-            $table->foreign('multimedia_id')->references('id')->on('multimedia');
-            $table->foreign('tag_id')->references('id')->on('tag');
+            $table->foreign('multimedia_id')->references('id')->on('multimedia')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tag')->onDelete('cascade');
         });
     }
 

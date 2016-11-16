@@ -9,7 +9,7 @@ class Tag extends Model
 {
     //
     protected $table = 'tag';
-
+    protected $fillable =["name"];
     public function multimedia(){
         return $this->belongsToMany(Multimedia::class)->withTimestamps();
     }

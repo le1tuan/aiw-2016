@@ -21,7 +21,7 @@ class NewsController extends ApiController
         return $this->respondWithPaginator($news, new NewsTransformer());
     }
     public function show($slug){
-        $news = News::where('slug','=',$slug)->get();
+        $news = News::where('slug',$slug)->firstOrFail()->get();
         return $this->respondWithCollection($news, new NewsDetailTransformer());
     }
 

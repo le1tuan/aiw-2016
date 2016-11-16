@@ -55,6 +55,7 @@
                             @else
                             @endif
                         </table>
+                        {{ $results->links() }}
                     </div>
                 </div>
 

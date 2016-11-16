@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewsTagTable extends Migration
+class CreatTableNewsTag extends Migration
 {
     /**
      * Run the migrations.
@@ -16,8 +16,8 @@ class CreateNewsTagTable extends Migration
             $table->increments('id');
             $table->integer('news_id')->unsigned();
             $table->integer('tag_id')->unsigned();
-            $table->foreign('news_id')->references('id')->on('news');
-            $table->foreign('tag_id')->references('id')->on('tag');
+            $table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tag')->onDelete('cascade');
         });
     }
 

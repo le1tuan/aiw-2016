@@ -19,8 +19,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"></div>
                     <div class="panel-body">
-                        <a class="btn btn-default" href="{{ url('admin/category/create') }}">Create Category</a>
-                        <table class="table table-bordered" style="margin-top: 20px">
+                        @include('common.errors')
+                        <table class="table table-bordered" style="margin-top: 20px;">
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
@@ -32,10 +32,10 @@
                                     <tr>
                                         <td>{{$result->id}}</td>
                                         <td>{{$result->name}}</td>
-                                        <td><a href="{{url('admin/category/'.$result->id.'/edit')}}"
+                                        <td><a href="{{url('admin/tag/'.$result->id.'/edit')}}"
                                                class="btn btn-primary">Edit</a></td>
                                         <td>
-                                            <form method="post" action="{{url('admin/category/'.$result->id )}}">
+                                            <form method="post" action="{{url('admin/tag/'.$result->id )}}">
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <button type="submit" class="btn btn-danger"
@@ -47,8 +47,8 @@
                                 @endforeach
                             @else
                             @endif
-
                         </table>
+                        {{ $results->links() }}
                     </div>
                 </div>
 

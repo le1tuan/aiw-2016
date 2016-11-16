@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMultimediaTable extends Migration
+class CreatTableNews extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,16 @@ class CreateMultimediaTable extends Migration
      */
     public function up()
     {
-        Schema::create('multimedia', function (Blueprint $table) {
+        Schema::create('news', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
             $table->string('short_des');
             $table->text('content');
             $table->string('slug');
-            $table->string('link');
+            $table->string('thumb');
             $table->string('author');
-            $table->integer('category_id');
-            $table->foreign('category_id')->references('id')->on('category');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ class CreateMultimediaTable extends Migration
      */
     public function down()
     {
-        Schema::drop('multimedia');
+        Schema::drop('news');
     }
 }

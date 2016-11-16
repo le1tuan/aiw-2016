@@ -6,7 +6,6 @@ use League\Fractal\Manager;
 use League\Fractal\Resource\Collection;
 use Illuminate\Contracts\Pagination\Paginator;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
-
 class ApiController extends Controller
 {
     const CODE_WRONG_ARGS = 'GEN-FUBARGS';
