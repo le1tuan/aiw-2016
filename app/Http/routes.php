@@ -11,6 +11,9 @@
 */
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header('Access-Control-Allow-Headers','Authorization, Content-Type, If-Match, If-Modified-Since,If-None-Match,If-Unmodified-Since');
+header('Access-Control-Allow-Credentials', 'true');
+header('Access-Control-Allow-Methods', '*');
 /*
  * API route
  * It returns data
