@@ -25,3 +25,20 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+## How to use aiw webservice
+Aiw webservice supplies all requirements of aiw final projects.
+This webservice is written by REST
+You can get data by change the url.
+
+## List of url
+## 1.Get all news
+http://masterle.96.lt/public/news
+## 2.Get one news by slug.
+http://masterle.96.lt/public/news/slug
+## 3.Get all multimedia
+http://masterle.96.lt/public/multimedia
+## 4.Get one multimedia by slug
+http://masterle.96.lt/public/multimedia/slug
+## 5.Get all category
+http://masterle.96.lt/public/category
+
