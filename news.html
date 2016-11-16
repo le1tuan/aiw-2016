@@ -20,9 +20,10 @@
                         <hr>
                     </div>
                 </div>
-                 <div class="text-center"><a ui-sref="news" class="btn btn-primary " style="width:80%;">View All News</a></div>  
                 <!-- Pager -->
                 <div>
+                <ul uib-pagination total-items="totalItems"  ng-model="currentPage" items-per-page="itemsPerPage"
+                ng-change="goToPage()" ></ul>
                 </div>
                 <!-- <div ng-repeat="mul in muls.data">
                     <h2 class="news-title">
