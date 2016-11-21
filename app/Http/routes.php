@@ -11,7 +11,6 @@
 */
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-
 /*
  * API route
  * It returns data
@@ -68,4 +67,6 @@ Route::auth();
 Route::group(['prefix' => 'newscomment'], function () {
     Route::resource('/', 'NewsCommentController', ['only' => ['store', 'index']]);
     Route::post('/','NewsCommentController@store');
+    Route::get('/{slug}/update','NewsCommentController@updateComment');
 });
+Route::get('search/{title}','SearchController@search');

@@ -7,6 +7,7 @@
  */
 namespace App\Http\Transformer;
 use App\Model\News;
+use Illuminate\Support\Facades\DB;
 use League\Fractal;
 class NewsDetailTransformer extends Fractal\TransformerAbstract{
     public function transform(News $news)
@@ -25,6 +26,15 @@ class NewsDetailTransformer extends Fractal\TransformerAbstract{
         }
         $created_at= strtotime($news->created_at);
         $created_at = date("F j, Y, g:i a",$created_at);
+        /**
+         * Related news
+         */
+        $relatedNews = DB::select('SELECT id,title,short_des,slug,thumb,author,created_at
+        FROM `news` where category_id=:category_id AND news.id!=:id
+        ORDER BY news.created_at desc limit 5',[
+            'category_id'=>$news->category_id,
+            'id' => $news->id
+        ]);
         return [
             "id" => $news->id,
             "title" => $news->title,
@@ -34,7 +44,8 @@ class NewsDetailTransformer extends Fractal\TransformerAbstract{
             "thumb" => $news->thumb,
             "author" => $news->author,
             "created_at" => $created_at,
-            "comments" =>$data
+            "comments" =>$data,
+            "related_news" =>$relatedNews
         ];
     }
 }

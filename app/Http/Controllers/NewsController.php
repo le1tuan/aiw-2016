@@ -17,7 +17,7 @@ class NewsController extends ApiController
     //
     public function index()
     {
-        $news = News::orderBy('created_at','desc')->paginate(5);
+        $news = News::orderBy('created_at','desc')->paginate(2);
         return $this->respondWithPaginator($news, new NewsTransformer());
     }
     public function show($slug){

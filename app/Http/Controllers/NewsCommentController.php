@@ -9,6 +9,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Input;
+use App\Model\News;
+use Symfony\Component\HttpFoundation\StreamedResponse;
+
 class NewsCommentController extends ApiController
 {
     public $path;
@@ -44,5 +47,24 @@ class NewsCommentController extends ApiController
             return Response::json(array('success'=>false));
         }
 
+    }
+    public function updateComment($slug){
+        header('Content-Type: text/event-stream');
+        header('Cache-Control: no-cache');
+        \Debugbar::disable();
+        $news = News::where('slug',$slug)->firstOrFail();
+        $comments=$news->newsComment()->get();
+        $result = array();
+        foreach($comments as $comment){
+            $data = array();
+            $data['author']= $comment['author'];
+            $data['content']=$comment['content'];
+            $data['created_at'] = strtotime($comment['created_at']);
+            $data['created_at']= date("F j, Y, g:i a",$data['created_at']);
+            $result[]=$data;
+        }
+        $display = json_encode($result);
+        echo "data: {$display}\n\n";
+        flush();
     }
 }
