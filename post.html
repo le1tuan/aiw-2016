@@ -1,6 +1,6 @@
-
-            <!-- Blog Post Content Column -->
-            <div ng-repeat="news in news.data">
+<div class="col-md-8" >  
+    <!-- Blog Post Content Column -->
+    <div ng-repeat="news in news.data">
 
                 <!-- Blog Post -->
 
@@ -20,7 +20,7 @@
                 <hr>
 
                 <!-- Preview Image -->
-                <img class="img-responsive" src="http://aiw.local/uploads/{{news.thumb}}" alt="">
+                <img class="img-responsive" ng-src="http://aiw.local/uploads/{{news.thumb}}" alt="">
 
                 <hr>
 
@@ -30,7 +30,6 @@
                 <hr>
 
                 <!-- Blog Comments -->
-                {{ news.b}}
                 <div class="media" ng-repeat="comment in news.comments">
                     <a class="pull-left" href="#">
                         <img class="media-object" src="http://placehold.it/64x64" alt="">
@@ -69,6 +68,43 @@
                 <!-- Comment -->
 
                 <!-- Comment -->
-            </div>
+    </div>              
+</div>
+<div class="col-md-4">
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                    <h4>Blog Search</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                    <!-- /.input-group -->
+                </div>
+                <!-- Side Widget Well -->
+                <div class="well">
+                    <h4>Related News</h4>
+                    <div ng-repeat="news in news.data">
+                        <div ng-repeat="related_news in news.related_news">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img class="img-responsive" ng-src="http://aiw.local/uploads/{{related_news.thumb}}" alt="">
+                                </div>
+                                <div class="col-md-8">
+                                    <a ui-sref="newsDetail({slug:related_news.slug})">{{related_news.title}}</a>
+                                    <p><span class="glyphicon glyphicon-time"></span> Posted on {{related_news.created_at}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Blog Categories Well -->
+                <div class="well" ui-view="category"></div>
+ </div>
+            
 
            

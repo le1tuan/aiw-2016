@@ -17,5 +17,6 @@ angular.module('aiwApp').controller('NewsController', function ($scope,News,$sta
          $scope.totalItems = data.meta.pagination.total;
          $scope.currentPage = data.meta.pagination.current_page;
          $scope.selectPage($scope.currentPage);
+
      });
 });

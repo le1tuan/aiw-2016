@@ -13,11 +13,16 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
 
     <!-- Custom CSS -->
     <link href="css/blog-home.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
+    <style type="text/css">
+        a{
+            text-decoration: none !important;
+        }
+    </style>
     <script src="js/angular.min.js"></script>
     <script src="vendor/node_modules/angular-ui-router/angular-ui-router.js"></script>
     <script src="vendor/node_modules/angular-resource/angular-resource.js"></script>
@@ -41,7 +46,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Start Bootstrap</a>
+                <a class="navbar-brand" href="#">Home Page</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -64,37 +69,8 @@
 
         <div class="row">
             <!-- Blog Entries Column -->
-            <div class="col-md-8" >  
-                <div ui-view="main"></div>            
-            </div>
-
+            <div ui-view="main"></div> 
             <!-- Blog Sidebar Widgets Column -->
-            <div class="col-md-4">
-
-                <!-- Blog Search Well -->
-                <div class="well">
-                    <h4>Blog Search</h4>
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                        </span>
-                    </div>
-                    <!-- /.input-group -->
-                </div>
-
-                <!-- Blog Categories Well -->
-                <div class="well" ui-view="category"></div>
-
-                <!-- Side Widget Well -->
-                <div class="well">
-                    <h4>Side Widget Well</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
-                </div>
-            </div>
-
         </div>
         <!-- /.row -->
 
@@ -104,7 +80,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <p>Copyright &copy; AIW-5c-13 2016</p>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -116,21 +92,17 @@
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-     <script src="app/controllers/NewsController.js"></script>
+    <script src="app/controllers/NewsController.js"></script>
+    <script src="app/controllers/CategoryController.js"></script>
+    <script src="app/controllers/SearchController.js"></script>
+    <script src="app/controllers/SearchFormController.js"></script>
     <!-- bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
     <script src="app/services/NewsService.js"></script>
     <script src="app/services/CategoryService.js"></script>
     <script src="app/services/MultimediaService.js"></script>
     <script src="app/services/CommentService.js"></script>
-    <script>
-
-        $(function(){
-
-
-        });
-
-    </script>
+    <script src="app/services/SearchService.js"></script>
 </body>
 
 </html>

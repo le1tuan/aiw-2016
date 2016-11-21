@@ -1,20 +1,17 @@
 
-                <div class="col-md-8">
-                <h2>Hot News</h2>
-                <div ng-repeat="news in news.data">
+            	<div class="col-md-8">
+                <h2>Result</h2>
+                <h3>{{noti}}</h3>
+                <div ng-repeat="result in results.data">
+
                     <div class="post">
                     <!-- Third Blog Post -->
-                        <h3 class="news-title">
-                            <a ui-sref="newsDetail({slug: news.slug})">{{news.title}}</a>
-                        </h3>
-                        <p class="lead">
-                            by {{news.author}}
-                        </p>
-                        <p><span class="glyphicon glyphicon-time"></span> Posted on {{news.created_at}}</p>
+                        <h3 class="result-title">
+                            <a ui-sref="newsDetail({slug: result.slug})">{{result.title}}</a>
+                        </h3> 
+                        <img class="img-responsive" ng-src="http://aiw.local/uploads/{{result.thumb}}" alt="{{result.title}}">
                         <hr>
-                        <img class="img-responsive" ng-src="http://aiw.local/uploads/{{news.thumb}}" alt="{{news.title}}">
-                        <hr>
-                        <p>{{news.short_des}}</p>
+                        <p>{{result.short_des}}</p>
                         <a class="btn btn-primary" ui-sref="newsDetail({slug: news.slug})" >Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                         <hr>
@@ -43,8 +40,9 @@
                  </div>      -->  
                 </div>
                 <div class="col-md-4">
-
                     <div class="well" ui-view="search"></div>
                     <div class="well" ui-view="category"></div>
                 </div>
-         
+
+
+        

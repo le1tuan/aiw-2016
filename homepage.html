@@ -1,43 +1,59 @@
 
-                <div>
-                <h2>Hot News</h2>
-                <div ng-repeat="news in news.data">
-                    <div class="post">
-                    <!-- Third Blog Post -->
-                        <h3 class="news-title">
-                            <a ui-sref="newsDetail({slug: news.slug})">{{news.title}}</a>
-                        </h3>
-                        <p class="lead">
-                            by {{news.author}}
-                        </p>
-                        <p><span class="glyphicon glyphicon-time"></span> Posted on {{news.created_at}}</p>
-                        <hr>
-                        <img class="img-responsive" ng-src="http://aiw.local/uploads/{{news.thumb}}" alt="{{news.title}}">
-                        <hr>
-                        <p>{{news.short_des}}</p>
-                        <a class="btn btn-primary" ui-sref="newsDetail({slug: news.slug})" >Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <div class="col-md-8">
+                    <h2>Hot News</h2>
+                    <div ng-repeat="news in news.data">
+                        <div class="post">
+                        <!-- Third Blog Post -->
+                            <h3 class="news-title">
+                                <a ui-sref="newsDetail({slug: news.slug})">{{news.title}}</a>
+                            </h3>
+                            <p class="lead">
+                                by {{news.author}}
+                            </p>
+                            <p><span class="glyphicon glyphicon-time"></span> Posted on {{news.created_at}}</p>
+                            <hr>
+                            <img class="img-responsive" ng-src="http://aiw.local/uploads/{{news.thumb}}" alt="{{news.title}}">
+                            <hr>
+                            <p>{{news.short_des}}</p>
+                            <a class="btn btn-primary" ui-sref="newsDetail({slug: news.slug})" >Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-                        <hr>
+                            <hr>
+                        </div>
                     </div>
-                </div>
-                 <div class="text-center"><a ui-sref="news" class="btn btn-primary " style="width:80%;">View All News</a></div>  
-                <!-- Pager -->
-                <div>
-                </div>
-                <!-- <div ng-repeat="mul in muls.data">
-                    <h2 class="news-title">
-                        <a ui-sref="newsDetail({slug: news.slug})">{{mul.title}}</a>
-                        </h2>
-                        <p class="lead">
-                            by <a href="index.php">{{mul.author}}</a>
-                        </p>
-                        <p><span class="glyphicon glyphicon-time"></span> Posted on {{mul.created_at}}</p>
-                        <hr>
-                        <iframe width="560" height="315" src='{{mul.link}}' frameborder="0" allowfullscreen></iframe>
-                        <hr>
-                        <p>{{mul.short_des}}</p>
-                        <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                     <div class="text-center"><a ui-sref="news" class="btn btn-primary " style="width:80%;">View All News</a></div>  
+                    <!-- Pager -->
+                    <div>
+                    </div>
+                    <!-- <div ng-repeat="mul in muls.data">
+                        <h2 class="news-title">
+                            <a ui-sref="newsDetail({slug: news.slug})">{{mul.title}}</a>
+                            </h2>
+                            <p class="lead">
+                                by <a href="index.php">{{mul.author}}</a>
+                            </p>
+                            <p><span class="glyphicon glyphicon-time"></span> Posted on {{mul.created_at}}</p>
+                            <hr>
+                            <iframe width="560" height="315" src='{{mul.link}}' frameborder="0" allowfullscreen></iframe>
+                            <hr>
+                            <p>{{mul.short_des}}</p>
+                            <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
-                        <hr>
-                 </div>      -->  
+                            <hr>
+                     </div>      -->  
+                </div>
+                <div class="col-md-4">
+                    <div class="well">
+                        <h4>Blog Search</h4>
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                            </span>
+                        </div>
+                     </div>
+                    <!-- /.input-group -->
+                    <div class="well" ui-view="category"></div>
+               
                 </div>

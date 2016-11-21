@@ -1,20 +1,14 @@
-
-/**
- * Created by Le Tuan Anh on 10/9/2016.
- */
 angular.module('aiwApp')
-.factory('NewsComment', function ($http,ApiUrl) {
+.factory('Search', function ($http,ApiUrl,$stateParams) {
     // return $resource('http://aiw.local/news/:slug',{slug: '@_slug'},{
     //     'get':    {method:'GET'},
     // });
      return{
-     	save:function(commentData){
+     	query:function(commentData){
      		return $http({
-     			method: 'POST',
-     			url : ApiUrl+'newscomment',
+     			method: 'GET',
+     			url : ApiUrl+'search/'+$stateParams.title,
      			headers:{'Content-Type' : 'application/json' },
-     			data: commentData
-
      		});
      	}
      }
