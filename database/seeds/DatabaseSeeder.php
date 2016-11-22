@@ -16,7 +16,10 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
 
         $this->call("CategorySeeder");
-
+        $this->call("TagSeeder");
+        $this->call("NewsSedder");
+        $this->call("NewsTagSedder");
+        $this->call("NewsComment");
         Model::reguard();
 
         // $this->call(UsersTableSeeder::class);
