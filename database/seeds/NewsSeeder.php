@@ -11,9 +11,9 @@ use Illuminate\Support\Facades\DB;
 class NewsSeeder extends Seeder{
 		public function run(){
 			$news = array(
-				array('title' => 'How the F.B.I. Reviewed Thousands of Emails in One Week','short_des' => 'Emails belonging to Huma Abedin, a top Clinton aide, were a small share of the 650,000 messages the F.B.I. recently found. Credit Doug Mills/The New York Times','content' => '<p>WASHINGTON — Out of hundreds of thousands of emails seized last month from disgraced former Representative Anthony D. Weiner, a substantial number turned out to be copies of documents already reviewed by&nbsp;<a href="http://topics.nytimes.com/top/reference/timestopics/organizations/f/federal_bureau_of_investigation/index.html?inline=nyt-org">F.B.I.</a>&nbsp;agents and analysts, allowing the agency to wrap up in days a review that some had feared would take weeks, if not longer.</p>
+				array('title' => 'How the F.B.I. Reviewed Thousands of Emails in One Week','short_des' => 'Emails belonging to Huma Abedin, a top Clinton aide, were a small share of the 650,000 messages the F.B.I. recently found. Credit Doug Mills/The New York Times','content' =>"<p>WASHINGTON — Out of hundreds of thousands of emails seized last month from disgraced former Representative Anthony D. Weiner, a substantial number turned out to be copies of documents already reviewed by&nbsp;<a href=\"http://topics.nytimes.com/top/reference/timestopics/organizations/f/federal_bureau_of_investigation/index.html?inline=nyt-org\">F.B.I.</a>&nbsp;agents and analysts, allowing the agency to wrap up in days a review that some had feared would take weeks, if not longer.</p>
 
-<p>The F.B.I. discovered approximately 650,000 emails on a computer that agents had seized while investigating Mr. Weiner on allegations of sexual improprieties. Some of those emails belonged to Huma Abedin, Mr. Weiner’s estranged wife and a top aide to&nbsp;<a href="http://www.nytimes.com/topic/person/hillary-rodham-clinton?inline=nyt-per">Hillary Clinton</a>.</p>
+<p>The F.B.I. discovered approximately 650,000 emails on a computer that agents had seized while investigating Mr. Weiner on allegations of sexual improprieties. Some of those emails belonged to Huma Abedin, Mr. Weiner’s estranged wife and a top aide to&nbsp;<a href=\"http://www.nytimes.com/topic/person/hillary-rodham-clinton?inline=nyt-per\">Hillary Clinton</a>.</p>
 
 <p>As it turned out, law enforcement officials said, there was no need to review all of the emails, only Ms. Abedin’s. Those emails numbered in the thousands, and even many of those were duplicates of messages that had been looked at previously, officials said.</p>
 
@@ -28,21 +28,21 @@ class NewsSeeder extends Seeder{
 <p>Taking to Twitter, Michael T. Flynn, a former Army lieutenant general and top Trump adviser, declared it “IMPOSSIBLE” that the F.B.I. could have scanned 650,000 emails in eight days.</p>
 
 <blockquote>
-<p><a href="https://twitter.com/GenFlynn">&nbsp;Follow</a></p>
+<p><a href=\"https://twitter.com/GenFlynn\">&nbsp;Follow</a></p>
 
-<p><a href="https://twitter.com/GenFlynn"><img alt="" src="https://pbs.twimg.com/profile_images/776241036628721668/jlSEDN4m_normal.jpg" />General Flynn&nbsp;</a><a href="https://twitter.com/GenFlynn"><strong>?</strong>@GenFlynn</a></p>
+<p><a href=\"https://twitter.com/GenFlynn\"><img alt=\"\" src=\"https://pbs.twimg.com/profile_images/776241036628721668/jlSEDN4m_normal.jpg\" />General Flynn&nbsp;</a><a href=\"https://twitter.com/GenFlynn\"><strong>?</strong>@GenFlynn</a></p>
 
 <p>IMPOSSIBLE:&nbsp;<br />
 There R 691,200 seconds in 8 days. DIR Comey has thoroughly reviewed 650,000 emails in 8 days? An email / second? IMPOSSIBLE RT</p>
 
-<p><a href="https://twitter.com/GenFlynn/status/795392694411468800">5:29 AM - 7 Nov 2016</a></p>
+<p><a href=\"https://twitter.com/GenFlynn/status/795392694411468800\">5:29 AM - 7 Nov 2016</a></p>
 
 <ul>
 	<li>&nbsp;</li>
 	<li>&nbsp;</li>
-	<li><a href="https://twitter.com/intent/retweet?tweet_id=795392694411468800">&nbsp;9,6609,660 Retweets</a></li>
+	<li><a href=\"https://twitter.com/intent/retweet?tweet_id=795392694411468800\">&nbsp;9,6609,660 Retweets</a></li>
 	<li>&nbsp;</li>
-	<li><a href="https://twitter.com/intent/like?tweet_id=795392694411468800">&nbsp;8,9468,946 likes</a></li>
+	<li><a href=\"https://twitter.com/intent/like?tweet_id=795392694411468800\">&nbsp;8,9468,946 likes</a></li>
 </ul>
 </blockquote>
 
@@ -58,29 +58,29 @@ There R 691,200 seconds in 8 days. DIR Comey has thoroughly reviewed 650,000 ema
 
 <p><strong>Was there classified information on the computer?</strong></p>
 
-<p>It is not clear, but that was never the most pressing question. From the beginning, officials said it would take an extraordinary discovery to change their conclusion that nobody should face charges in the case. Prosecutors and agents knew that classified information had been improperly stored on Mrs. Clinton’s server. The F.B.I. director, James B. Comey,&nbsp;<a href="http://www.nytimes.com/2016/07/06/us/politics/hillary-clinton-fbi-email-comey.html">called it careless</a>but said it did not rise to the level of a crime. Simply finding more classified information would not, by itself, have changed that conclusion.</p>
+<p>It is not clear, but that was never the most pressing question. From the beginning, officials said it would take an extraordinary discovery to change their conclusion that nobody should face charges in the case. Prosecutors and agents knew that classified information had been improperly stored on Mrs. Clinton’s server. The F.B.I. director, James B. Comey,&nbsp;<a href=\"http://www.nytimes.com/2016/07/06/us/politics/hillary-clinton-fbi-email-comey.html\">called it careless</a>but said it did not rise to the level of a crime. Simply finding more classified information would not, by itself, have changed that conclusion.</p>
 
 <h2>Sign-up for free NYT Newsletters</h2>
 
-<p>&nbsp;&nbsp;<img alt="" src="https://a1.nyt.com/assets/newsletters/latest/images/newsletters/thumb_nails/the-nyt-now-morning-briefing.png" /></p>
+<p>&nbsp;&nbsp;<img alt=\"\" src=\"https://a1.nyt.com/assets/newsletters/latest/images/newsletters/thumb_nails/the-nyt-now-morning-briefing.png\" /></p>
 
 <p>Morning Briefing</p>
 
 <p>News to start your day, weekdays</p>
 
-<p>&nbsp;<img alt="" src="https://a1.nyt.com/assets/newsletters/latest/images/newsletters/thumb_nails/opinion-today.jpg" /></p>
+<p>&nbsp;<img alt=\"\" src=\"https://a1.nyt.com/assets/newsletters/latest/images/newsletters/thumb_nails/opinion-today.jpg\" /></p>
 
 <p>Opinion Today</p>
 
 <p>Thought-provoking commentary, weekdays</p>
 
-<p>&nbsp;<img alt="" src="https://a1.nyt.com/assets/newsletters/latest/images/newsletters/thumb_nails/cooking.jpg" /></p>
+<p>&nbsp;<img alt=\"\" src=\"https://a1.nyt.com/assets/newsletters/latest/images/newsletters/thumb_nails/cooking.jpg\" /></p>
 
 <p>Cooking</p>
 
 <p>Delicious recipes and more, 5 times a week</p>
 
-<p>&nbsp;<img alt="" src="https://a1.nyt.com/assets/article/latest/images/shared/newsletterpromo/racerelated-30x30.png" /></p>
+<p>&nbsp;<img alt=\"\" src=\"https://a1.nyt.com/assets/article/latest/images/shared/newsletterpromo/racerelated-30x30.png\" /></p>
 
 <p>Race/Related</p>
 
@@ -95,7 +95,7 @@ There R 691,200 seconds in 8 days. DIR Comey has thoroughly reviewed 650,000 ema
 <p>&nbsp;</p>
 
 <ul>
-	<li><a href="http://www.nytimes.com/privacy" target="_blank">PRIVACY POLICY</a></li>
+	<li><a href=\"http://www.nytimes.com/privacy\" target=\"_blank\">PRIVACY POLICY</a></li>
 </ul>
 
 <p>The F.B.I. has not said what was in the newly discovered emails, but records previously released under the Freedom of Information Act show that Ms. Abedin’s inbox contained mostly scheduling discussions, routine office chatter and the occasional instruction from Mrs. Clinton to print something.</p>
@@ -116,14 +116,14 @@ There R 691,200 seconds in 8 days. DIR Comey has thoroughly reviewed 650,000 ema
 
 <p>It depends on where you sit.</p>
 
-<p>Mr. Comey’s aides say it was about preserving the F.B.I.’s credibility. Had word leaked out that the F.B.I. was reading new emails that might be related to Mrs. Clinton, they say, it would have raised suspicion that Mr. Comey had not been forthcoming when he told Congress in July that&nbsp;<a href="http://www.nytimes.com/2016/07/07/us/politics/hillary-clinton-loretta-lynch.html">the investigation was complete</a>. Democrats and some former federal law enforcement officials say it was all about Mr. Comey, who&nbsp;<a href="http://www.nytimes.com/2016/10/30/us/politics/comey-clinton-email-justice.html">ignored longstanding guidelines</a>&nbsp;and traditions and plunged the F.B.I. into the presidential race. Had he followed standard Justice Department practices and kept quiet while the F.B.I. did its work, they say, this all could have been avoided.</p>
+<p>Mr. Comey’s aides say it was about preserving the F.B.I.’s credibility. Had word leaked out that the F.B.I. was reading new emails that might be related to Mrs. Clinton, they say, it would have raised suspicion that Mr. Comey had not been forthcoming when he told Congress in July that&nbsp;<a href=\"http://www.nytimes.com/2016/07/07/us/politics/hillary-clinton-loretta-lynch.html\">the investigation was complete</a>. Democrats and some former federal law enforcement officials say it was all about Mr. Comey, who&nbsp;<a href=\"http://www.nytimes.com/2016/10/30/us/politics/comey-clinton-email-justice.html\">ignored longstanding guidelines</a>&nbsp;and traditions and plunged the F.B.I. into the presidential race. Had he followed standard Justice Department practices and kept quiet while the F.B.I. did its work, they say, this all could have been avoided.</p>
 
 <p>In the end, though, this was not much about Mrs. Clinton at all. The F.B.I. made its conclusion — careless, but not criminal — months ago, and nothing has changed.</p>
 
 <p><strong>What does this mean for Mr. Comey and the F.B.I.?</strong></p>
 
 <p>Mr. Comey has told aides that he feels no pressure to step down and has no plans to do so, with nearly seven years left in his term. Mrs. Clinton’s surrogates say it would be politically difficult for her to fire him if she is elected. And the White House said Monday that President Obama continued to have confidence in Mr. Comey. But some F.B.I. employees fear that the episode has damaged the bureau’s reputation of being nonpartisan and above the political fray.</p>
-','slug' => 'how-the-f-b-i-reviewed-thousands-of-emails-in-one-week','thumb' => '08emailsqanda-master768.jpg','author' => 'ADAM GOLDMAN and MATT APUZZO','category_id' => '3','created_at' => '2016-11-08 06:41:54','updated_at' => '2016-11-16 07:28:02'),
+",'slug' => 'how-the-f-b-i-reviewed-thousands-of-emails-in-one-week','thumb' => '08emailsqanda-master768.jpg','author' => 'ADAM GOLDMAN and MATT APUZZO','category_id' => '3','created_at' => '2016-11-08 06:41:54','updated_at' => '2016-11-16 07:28:02'),
 				array('title' => 'Firings and Discord Put Trump Transition Team in a State of Disarray','short_des' => 'Vice President-elect Mike Pence arrived at Trump Tower in Manhattan on Tuesday. Credit Sam Hodgson for The New York Times','content' => '<p>WASHINGTON — President-elect&nbsp;<a href="http://www.nytimes.com/topic/person/donald-trump?inline=nyt-per">Donald J. Trump</a>’s transition was in disarray on Tuesday, marked by firings, infighting and revelations that American allies were blindly dialing in to Trump Tower to try to reach the soon-to-be-leader of the free world.</p>
 
 <p>One week after&nbsp;<a href="http://www.nytimes.com/2016/11/09/us/politics/hillary-clinton-donald-trump-president.html">Mr. Trump scored an upset victory</a>&nbsp;that took him by surprise, his team was improvising the most basic traditions of assuming power. That included working without official State Department briefing materials in his first conversations with foreign leaders.</p>
@@ -355,6 +355,13 @@ CreditManuel Balce Ceneta/Associated Press</p>
 				array('title' => '?dasd','short_des' => 'ádasdads','content' => 'ádasdasd','slug' => '','thumb' => '','author' => 'ádasdasd','category_id' => '3','created_at' => NULL,'updated_at' => NULL),
 				array('title' => '?dasd','short_des' => 'ádasdads','content' => 'ádasdasd','slug' => '','thumb' => '','author' => 'ádasdasd','category_id' => '3','created_at' => NULL,'updated_at' => NULL)
 			);
+			foreach ($news as &$new) {
+				foreach ($new as &$value) {
+					$value=addslashes($value);
+
+				}
+			}
+
 			DB::table('tag')->insert($news);
 		}
 

@@ -54,11 +54,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', 'localhost'),
+            'host' => env('DB_HOST', 'mysql.hostinger.vn'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'aiw'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', '	u399709358_aiw'),
+            'username' => env('DB_USERNAME', 'u399709358_root'),
+            'password' => env('DB_PASSWORD', 'ditmemay1'),
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
