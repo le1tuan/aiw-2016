@@ -14,6 +14,10 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
                 "category@homepage":{
                     templateUrl:'../category.html',
                     controller: 'CategoryController'
+                },
+                "search@homepage":{
+                    templateUrl:'../search.html',
+                    controller: 'SearchFormController'
                 }
             }
             
@@ -89,19 +93,19 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
                         $scope.commentData={};
                         $http.get(ApiUrl+"news/"+$stateParams.slug)
                                 .then(function(response) {
-                                    $scope.news=response.data;
-                                    if(typeof(EventSource) !== "undefined") {
-                                        var source = new EventSource(ApiUrl+"newscomment/"+$stateParams.slug+"/update");
-                                        source.onmessage = function(event) {
-                                            var x = JSON.parse(event.data);
-                                            $scope.news.data[0].comments=x;
-                                            $scope.$digest();
+                                    $scope.news=response.data;                     
+                        }); 
+                        if(typeof(EventSource) !== "undefined") {
+                            var source = new EventSource(ApiUrl+"newscomment/"+$stateParams.slug+"/update");
+                            source.onmessage = function(event) {
+                                var x = JSON.parse(event.data);
+                                $scope.news.data[0].comments=x;
+                                 $scope.$digest();
                                             // console.log($scope.news.data[0].comments);
-                                        };
-                                    } else {
-                                        console.log("error");
-                                    }                       
-                                }); 
+                            };
+                        } else {
+                            console.log("error");
+                        }                         
                         
                         // $scope.updateComment = function(){
                         //     var x = $stateParams.slug;
@@ -134,6 +138,10 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
                 "category@newsDetail":{
                     templateUrl:'../category.html',
                     controller: 'CategoryController'
+                },
+                "search@newsDetail":{
+                    templateUrl:'../search.html',
+                    controller: 'SearchFormController'
                 }
             }
             
@@ -163,8 +171,26 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
                 }
             }
         })
+        .state('searchResult.pagination',{
+            url :'/{page}',
+            views: {
+                "main@": {
+                    templateUrl: '../result-search.html',
+                    controller: "SearchController"
+                },
+                "category@searchResult.pagination":{
+                    templateUrl:'../category.html',
+                    controller: 'CategoryController'
+                },
+                "search@searchResult.pagination":{
+                    templateUrl:'../search.html',
+                    controller: 'SearchFormController'
+                }
+            }
+
+        })
     $urlRouterProvider.otherwise('/');
-}).constant('ApiUrl', 'https://aiw.herokuapp.com/public/');
+}).constant('ApiUrl', 'http://ebz-client.local/aiw-2016/public/');
 aiw.config(function ($sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist(['**']);
 });

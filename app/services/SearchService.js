@@ -4,10 +4,10 @@ angular.module('aiwApp')
     //     'get':    {method:'GET'},
     // });
      return{
-     	query:function(commentData){
+     	query:function(){
      		return $http({
      			method: 'GET',
-     			url : ApiUrl+'search/'+$stateParams.title,
+     			url : ApiUrl+'search/'+$stateParams.title+'?page='+($stateParams.page==undefined?1:$stateParams),
      			headers:{'Content-Type' : 'application/json' },
      		});
      	}
