@@ -190,7 +190,7 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
 
         })
     $urlRouterProvider.otherwise('/');
-}).constant('ApiUrl', 'http://ebz-client.local/aiw-2016/public/');
+}).constant('ApiUrl', 'http://aiw.herokuapp.com/public/');
 aiw.config(function ($sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist(['**']);
 });
