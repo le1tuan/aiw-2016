@@ -9,10 +9,9 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\Http\Controllers\NewsCommentController;
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-header('Content-Type: text/event-stream');
-header('Cache-Control: no-cache');
 /*
  * API route
  * It returns data
@@ -69,6 +68,11 @@ Route::auth();
 Route::group(['prefix' => 'newscomment'], function () {
     Route::resource('/', 'NewsCommentController', ['only' => ['store', 'index']]);
     Route::post('/','NewsCommentController@store');
-    Route::get('/{slug}/update','NewsCommentController@updateComment');
+    Route::get('/{slug}/update',function($slug){
+        header('Content-Type: text/event-stream');
+        header('Cache-Control: no-cache');
+        $comment = new NewsCommentController();
+        $comment->updateComment($slug);
+    });
 });
 Route::get('search/{title}','SearchController@search');
