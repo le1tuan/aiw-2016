@@ -11,6 +11,8 @@
 */
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
+header('Content-Type: text/event-stream');
+header('Cache-Control: no-cache');
 /*
  * API route
  * It returns data

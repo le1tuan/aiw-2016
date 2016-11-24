@@ -49,8 +49,6 @@ class NewsCommentController extends ApiController
 
     }
     public function updateComment($slug){
-        header('Content-Type: text/event-stream');
-        header('Cache-Control: no-cache');
         \Debugbar::disable();
         $news = News::where('slug',$slug)->firstOrFail();
         $comments=$news->newsComment()->get();
