@@ -23,6 +23,17 @@ class NewsController extends CoreController{
     public function saveFile($file){
         $file->move('uploads',$file->getClientOriginalName());
     }
+    public function validateTag($tagName,$entry){
+        $tag = Tag::where('name',$tagName)->first();
+        if(count($tag)!=0){
+            $entry->tag()->save($tag);
+        }else{
+            $tag = new Tag;
+            $tag->name=$tagName;
+            $tag->save();
+            $entry->tag()->save($tag);
+        }
+    }
     public function store(){
 
         if(Input::hasFile('thumb')){
@@ -30,24 +41,22 @@ class NewsController extends CoreController{
             $this->saveFile($file);
         }
         $input = Input::all();
-        var_dump($input);
         $input['thumb']=$file->getClientOriginalName();
         $mainModel = $this->name;
         unset($input["_token"]);
         $entry =$mainModel::create($input);
+        $tagErrorMes="";
         foreach($input['tag'] as $key => $value){
             if($value!=""){
-                $tag = new Tag;
-                $tag->name=$value;
-                $tag->save();
-                $entry->tag()->save($tag);
+               $this->validateTag($value,$entry);
             }
         }
+
         if(isset($entry)){
             Session::flash('success','News created');
             return redirect('admin/news');
         }else{
-            Session::flash('error','Error when create news');
+            Session::flash('error',"Error when create news".$tagErrorMes);
             return redirect('admin/news');
         }
 

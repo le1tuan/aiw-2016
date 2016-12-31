@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\DB;
 use League\Fractal;
 class NewsDetailTransformer extends Fractal\TransformerAbstract{
     public function transform(News $news)
-    {
+    {   
+        //Comment
         $comments=$news->newsComment()->get();
         $data =array();
 
@@ -35,6 +36,15 @@ class NewsDetailTransformer extends Fractal\TransformerAbstract{
             'category_id'=>$news->category_id,
             'id' => $news->id
         ]);
+        //Tag 
+        $newsTags = $news->tag()->get();
+        $tags = array();
+        foreach ($newsTags as $tag) {
+            $result = array();
+            $result['name']=$tag->name;
+            $tags[]= $result;
+        }
+
         return [
             "id" => $news->id,
             "title" => $news->title,
@@ -44,8 +54,10 @@ class NewsDetailTransformer extends Fractal\TransformerAbstract{
             "thumb" => $news->thumb,
             "author" => $news->author,
             "created_at" => $created_at,
+            "tags"    => $tags,
             "comments" =>$data,
             "related_news" =>$relatedNews
         ];
+
     }
 }

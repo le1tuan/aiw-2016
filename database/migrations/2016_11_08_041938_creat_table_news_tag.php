@@ -16,6 +16,7 @@ class CreatTableNewsTag extends Migration
             $table->increments('id');
             $table->integer('news_id')->unsigned();
             $table->integer('tag_id')->unsigned();
+            $table->timestamps();
             $table->foreign('news_id')->references('id')->on('news')->onDelete('cascade');
             $table->foreign('tag_id')->references('id')->on('tag')->onDelete('cascade');
         });

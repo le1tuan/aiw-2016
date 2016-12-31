@@ -31,7 +31,7 @@
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Title</label>
                                             <input type="text" class="form-control" name="title" placeholder="Title"
-                                                   value="{{ isset($result)?$result->title:''}}" required>
+                                                   value="{{ isset($result)?$result->title:''}}">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Short_des</label>
@@ -67,7 +67,7 @@
                                         @if(isset($categories))
                                             <div class="form-group">
                                                 <label for="exampleInputPassword1">Category</label>
-                                                <select name="category_id" class="form-control" required>
+                                                <select name="category_id" class="form-control" {{isset($result)?'':'required'}} >
                                                     <?php var_dump($categories) ?>
                                                     @foreach($categories as $category)
                                                         <option value="{{ $category->id }}" {{ isset($result)&&($result->category_id==$category->id)?'selected':''}} >{{ $category->name }}</option>
@@ -82,7 +82,7 @@
                                                     <p>{{$t->name}}</p>
                                                 @endforeach
                                             @endif
-                                            <input type="text" class="form-control" name="tag[]" required>
+                                            <input type="text" class="form-control" name="tag[]" {{isset($result)?'':'required'}} >
                                         </div>
                                         <div class="tag-result">
 

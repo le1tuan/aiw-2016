@@ -9,6 +9,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+use App\Http\Controllers\NewsCommentController;
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 /*
@@ -27,6 +28,11 @@ Route::group(['prefix' => 'multimedia'], function () {
 });
 Route::group(['prefix' => 'category'], function () {
     Route::get('/', 'CategoryController@index');
+    Route::get('/{name}','CategoryController@show');
+});
+Route::group(['prefix' => 'tag'], function () {
+    Route::get('/', 'TagController@index');
+    Route::get('/{name}','TagController@show');
 });
 
 
