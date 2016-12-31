@@ -7,9 +7,13 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
         .state('homepage', {
             url: '/',
             views: {
+                "menu":{
+                    templateUrl: '../menu.html',
+                    controller: "CategoryController"
+                },
                 "main": {
                     templateUrl: '../homepage.html',
-                    controller: "NewsController"
+                    controller: "HomePageController"
                 },
                 "category@homepage":{
                     templateUrl:'../category.html',
@@ -42,6 +46,10 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
         .state('news', {
             url: '/news',
             views: {
+                "menu":{
+                    templateUrl: '../menu.html',
+                    controller: "CategoryController"
+                },
                 "main": {
                     templateUrl: '../news.html',
                     controller: "NewsController"
@@ -70,6 +78,10 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
         .state('news.pagination',{
             url: '/{page}',
             views: {
+                "menu":{
+                    templateUrl: '../menu.html',
+                    controller: "CategoryController"
+                },
                 "main@": {
                     templateUrl: '../news.html',
                     controller: "NewsController"
@@ -87,25 +99,32 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
         .state('newsDetail',{
             url:'/article/:slug',
             views: {
-               "main": {
+                "menu":{
+                    templateUrl: '../menu.html',
+                    controller: "CategoryController"
+                },
+                "main": {
                     templateUrl:'../post.html',
                     controller:function($scope,$stateParams,NewsComment,$state,$http,$interval,ApiUrl){
                         $scope.commentData={};
-                        $http.get(ApiUrl+"news/"+$stateParams.slug)
-                                .then(function(response) {
-                                    $scope.news=response.data;                     
+                        $http.get(ApiUrl+"news/"+$stateParams.slug).then(function(response) {
+                            $scope.news=response.data; 
+                            if(typeof(EventSource) !== "undefined") {
+                                var source = new EventSource(ApiUrl+"newscomment/"+$stateParams.slug+"/update");
+                                source.onmessage = function(event) {
+                                    var x = JSON.parse(event.data);
+                                    if(x!=undefined){
+                                        $scope.news.data[0].comments=x;
+                                        $scope.$digest();
+                                    }else{
+                                        console.log("error when read data");
+                                    }
+                                };
+                            } else {
+                                console.log("error");
+                            }                         
                         }); 
-                        if(typeof(EventSource) !== "undefined") {
-                            var source = new EventSource(ApiUrl+"newscomment/"+$stateParams.slug+"/update");
-                            source.onmessage = function(event) {
-                                var x = JSON.parse(event.data);
-                                $scope.news.data[0].comments=x;
-                                 $scope.$digest();
-                                            // console.log($scope.news.data[0].comments);
-                            };
-                        } else {
-                            console.log("error");
-                        }                         
+                                            
                         
                         // $scope.updateComment = function(){
                         //     var x = $stateParams.slug;
@@ -117,13 +136,13 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
 
                         // }
                         $scope.submitContent = function(){
+                            console.log($scope.commentData);
                            NewsComment.save($scope.commentData).success(function(data){
                                 $scope.commentData.content="";
                                 var x = $stateParams.slug;
                                 $http.get(ApiUrl+"news/"+x)
                                 .then(function(response) {
                                     $scope.news=response.data;
-                                    console.log($scope.news.data);
                                 }); 
                            })
                            .error(function(){
@@ -133,6 +152,15 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
                         }
                         // $interval($scope.updateComment,5000);
 
+                    }
+                },
+                "related-news@newsDetail":{
+                    templateUrl:'../related-news.html',
+                    controller: function($scope,$stateParams,NewsComment,$state,$http,$interval,ApiUrl){
+                        $http.get(ApiUrl+"news/"+$stateParams.slug)
+                                .then(function(response) {
+                                    $scope.relatedNews=response.data.data[0].related_news;               
+                        }); 
                     }
                 },
                 "category@newsDetail":{
@@ -157,6 +185,10 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
         .state('searchResult',{
             url:'/search/:title',
             views: {
+                "menu":{
+                    templateUrl: '../menu.html',
+                    controller: "CategoryController"
+                },
                 "main@": {
                     templateUrl: '../result-search.html',
                     controller: "SearchController"
@@ -174,6 +206,10 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
         .state('searchResult.pagination',{
             url :'/{page}',
             views: {
+                "menu":{
+                    templateUrl: '../menu.html',
+                    controller: "CategoryController"
+                },
                 "main@": {
                     templateUrl: '../result-search.html',
                     controller: "SearchController"
@@ -189,8 +225,98 @@ aiw.config(function ($stateProvider, $urlRouterProvider) {
             }
 
         })
+        .state('searchCategory',{
+            url:'/searchCategory/:name',
+            views:{
+                 "menu":{
+                    templateUrl: '../menu.html',
+                    controller: "CategoryController"
+                },
+                "main@": {
+                    templateUrl: '../result-search.html',
+                    controller: "SearchCategoryController"
+                },
+                "category@searchCategory":{
+                    templateUrl:'../category.html',
+                    controller: 'CategoryController'
+                },
+                "search@searchCategory":{
+                    templateUrl:'../search.html',
+                    controller: 'SearchFormController'
+                }
+            }
+
+        })
+        .state('searchCategory.pagination',{
+            url :'/{page}',
+            views: {
+                "menu":{
+                    templateUrl: '../menu.html',
+                    controller: "CategoryController"
+                },
+                "main@": {
+                    templateUrl: '../result-search.html',
+                    controller: "SearchCategoryController"
+                },
+                "category@searchCategory.pagination":{
+                    templateUrl:'../category.html',
+                    controller: 'CategoryController'
+                },
+                "search@searchCategory.pagination":{
+                    templateUrl:'../search.html',
+                    controller: 'SearchFormController'
+                }
+            }
+
+        })
+        .state('tag',{
+            url :'/tag/{name}',
+            views: {
+                "menu":{
+                    templateUrl: '../menu.html',
+                    controller: "CategoryController"
+                },
+                "main@": {
+                    templateUrl: '../result-search.html',
+                    controller: "TagController"
+                },
+                "category@tag":{
+                    templateUrl:'../category.html',
+                    controller: 'CategoryController'
+                },
+                "search@tag":{
+                    templateUrl:'../search.html',
+                    controller: 'SearchFormController'
+                }
+            }
+
+        })
+        .state('tag.pagination',{
+            url :'/{page}',
+            views: {
+                "menu":{
+                    templateUrl: '../menu.html',
+                    controller: "CategoryController"
+                },
+                "main@": {
+                    templateUrl: '../result-search.html',
+                    controller: "TagController"
+                },
+                "category@tag.pagination":{
+                    templateUrl:'../category.html',
+                    controller: 'CategoryController'
+                },
+                "search@tag.pagination":{
+                    templateUrl:'../search.html',
+                    controller: 'SearchFormController'
+                }
+            }
+
+        })
     $urlRouterProvider.otherwise('/');
-}).constant('ApiUrl', 'https://aiw.herokuapp.com/public/');
+})
+    //.constant('ApiUrl', 'https://aiw.herokuapp.com/public/');
+.constant('ApiUrl', 'http://aiw.local/');
 aiw.config(function ($sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist(['**']);
 });

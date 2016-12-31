@@ -2,7 +2,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <ul class="list-unstyled" ng-repeat="category in categories.data">
-                                <li><a >{{category.name}}</a></li>
+                                <li><a ui-sref="searchCategory({name: category.name})">{{category.name}}</a></li>
                             </ul>
                         </div>
                     </div>

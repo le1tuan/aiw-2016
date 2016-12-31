@@ -5,6 +5,7 @@
                 <!-- Blog Post -->
 
                 <!-- Title -->
+
                 <h1>{{news.title}}</h1>
 
                 <!-- Author -->
@@ -26,10 +27,16 @@
 
                 <!-- Post Content -->
                 <p ng-bind-html="news.content"></p>
-
                 <hr>
-
-                <!-- Blog Comments -->
+                
+                    <ul class="list-inline" >
+                        <h4>Tag</h4>
+                        <li ng-repeat="tag in news.tags">
+                            <a ui-sref="tag({name: tag.name})">#{{tag.name}}</a>
+                        </li>
+                    </ul>
+                
+                <!-- Blog Comments -->  
                 <div class="media" ng-repeat="comment in news.comments">
                     <a class="pull-left" href="#">
                         <img class="media-object" src="http://placehold.it/64x64" alt="">
@@ -47,11 +54,12 @@
                     <h4>Leave a Comment:</h4>
                     <form role="form" ng-submit="submitContent()">
                         <div class="form-group">
+
                             <input type="hidden" ng-model="commentData.news_id" ng-init="commentData.news_id=news.id" /> 
                         </div>
                         <div class="form-group">
                             <label>Author</label>
-                            <input id='author' type="text" name="author" ng-model="commentData.author">
+                            <input id='author' class="form-control"  type="text" name="author" ng-model="commentData.author">
                         </div>
                         <div class="form-group">
                             <label>Content</label>
@@ -71,9 +79,10 @@
     </div>              
 </div>
 <div class="col-md-4">
-
                 <!-- Blog Search Well -->
                 <div class="well" ui-view="search"></div>
+                <!--Related News-->
+                <div class="well" ui-view="related-news"></div>
                 <!-- Blog Categories Well -->
                 <div class="well" ui-view="category"></div>
  </div>

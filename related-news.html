@@ -1,0 +1,12 @@
+<h4>Related News</h4>	
+				<div ng-repeat="news in relatedNews">
+                    <div class="row" >
+                         <div class="col-md-4">
+                         	<img class="img-responsive" ng-src="http://aiw.local/uploads/{{news.thumb}}">
+                         </div>
+                         <div class="col-md-8">
+                         	<a ui-sref="newsDetail({slug: news.slug})"><p><b>{{news.title}}</b></p></a>
+                         </div>
+                    </div>
+                </div>
+          

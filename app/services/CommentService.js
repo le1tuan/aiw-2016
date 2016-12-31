@@ -14,7 +14,6 @@ angular.module('aiwApp')
      			url : ApiUrl+'newscomment',
      			headers:{'Content-Type' : 'application/json' },
      			data: commentData
-
      		});
      	}
      }

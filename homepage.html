@@ -1,26 +1,28 @@
 
                 <div class="col-md-8">
-                    <h2>Hot News</h2>
-                    <div ng-repeat="news in news.data">
-                        <div class="post">
+                    
+                    <div ng-repeat="(key,value) in news" class="col-md-6">
+                        <h2>{{key}}</h2>
+                        <div class="post" ng-repeat="data in value">
                         <!-- Third Blog Post -->
                             <h3 class="news-title">
-                                <a ui-sref="newsDetail({slug: news.slug})">{{news.title}}</a>
+                                <a ui-sref="newsDetail({slug: data.slug})">{{data.title}}</a>
                             </h3>
                             <p class="lead">
-                                by {{news.author}}
+                                by {{data.author}}
                             </p>
-                            <p><span class="glyphicon glyphicon-time"></span> Posted on {{news.created_at}}</p>
+                            <p><span class="glyphicon glyphicon-time"></span> Posted on {{data.created_at}}</p>
                             <hr>
-                            <img class="img-responsive" ng-src="http://aiw.local/uploads/{{news.thumb}}" alt="{{news.title}}">
+                            <img class="img-responsive" ng-src="http://aiw.local/uploads/{{data.thumb}}" alt="{{data.title}}">
                             <hr>
-                            <p>{{news.short_des}}</p>
-                            <a class="btn btn-primary" ui-sref="newsDetail({slug: news.slug})" >Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                            <p>{{data.short_des}}</p>
+                            <a class="btn btn-primary" ui-sref="newsDetail({slug: data.slug})" >Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                             <hr>
                         </div>
+                        <div class="text-center"><a ui-sref="searchCategory({name: key})" class="btn btn-primary " style="width:80%;">View All {{key}}</a>
                     </div>
-                     <div class="text-center"><a ui-sref="news" class="btn btn-primary " style="width:80%;">View All News</a></div>  
+                     </div>  
                     <!-- Pager -->
                     <div>
                     </div>

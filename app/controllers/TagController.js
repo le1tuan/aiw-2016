@@ -1,20 +1,18 @@
 /**
  * Created by Le Tuan Anh on 10/9/2016.
  */
-angular.module('aiwApp').controller('SearchController', function ($scope,Search,ApiUrl,$stateParams,$state) {
-		
-    	
-    	//Handle Show Pagination Result 
-    	$scope.selectPage= function(pageNo){
+angular.module('aiwApp').controller('TagController', function ($scope,Tag,ApiUrl,$stateParams) {
+    $scope.selectPage= function(pageNo){
         	$scope.currentPage= pageNo;
-	    };
-	    $scope.goToPage = function(){
-	        $state.go('searchResult.pagination',{page: $scope.currentPage});
+	};
+	$scope.goToPage = function(){
+	        $state.go('tag.pagination',{page: $scope.currentPage});
+            console.log($scope.currentPage);
 	        $scope.selectPage($scope.currentPage);
-	    };
-	    Search.query().then(function(response){
+	};
+    Tag.query().then(function(response){
     		$scope.results=response.data;
-            $scope.header="Result";
+            $scope.header="Tag : '"+$stateParams.name+"'";
             if($scope.results.data.length==0){
                 $scope.noti="Not Found";
             }else{
@@ -26,6 +24,5 @@ angular.module('aiwApp').controller('SearchController', function ($scope,Search,
     		$scope.currentPage =meta.current_page;
 	        $scope.selectPage($scope.currentPage);
     		
-    	});
-
-});	
+    });
+});
